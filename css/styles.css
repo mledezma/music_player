@@ -34,4 +34,10 @@
   transform: rotate(270deg);
   /* IE 10, Fx 16+, Op 12.1+ */ }
 
+.fa, tr {
+  cursor: pointer; }
+
+.fa-backward {
+  margin-right: 20px; }
+
 /*# sourceMappingURL=styles.css.map */

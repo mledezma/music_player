@@ -2,11 +2,11 @@
     "songs":[
         {
             "name":"audio",
-            "artist":"Ultra mario yolo"
+            "artist":"Artist 1"
         },
         {
             "name":"audio2",
-            "artist":"Hi"
+            "artist":"Artist 2"
         }
     ]
 }

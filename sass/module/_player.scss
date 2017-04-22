@@ -37,3 +37,11 @@
       -ms-transform: rotate(270deg); /* IE 9 */
           transform: rotate(270deg); /* IE 10, Fx 16+, Op 12.1+ */
 }
+
+.fa, tr {
+    cursor: pointer;
+}
+
+.fa-backward {
+    margin-right: 20px;
+}
