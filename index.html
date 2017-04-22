@@ -1,16 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         <meta charset="utf-8">
         <title>Title</title>
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     </head>
     <body>
-
-        <button id="play">
-            play
-        </button>
+        <div id="player">
+            <table>
+                <thead>
+                    <tr>
+                        <td>Nombre</td>
+                        <td>Artista</td>                 
+                    </tr>
+                </thead>
+                <tbody id="listSongs"></tbody>
+            </table>
+        </div>
+        <div id="player-controls">
+        </div>
         <script src="js/jquery.min.js"></script>
         <script src="js/main.js"></script>         
     </body>
