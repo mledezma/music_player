@@ -8,7 +8,12 @@
     var previousSong = '';    
     var errorStop = null;
     var playerControls = document.getElementById('player-controls');    
+    var saveStorage = null;
 
+    (function(){
+        _initStorage();
+    })
+    
     // IIFE that calls the jason
     (function _requestSongs() {
         var httpRequest = new XMLHttpRequest();
@@ -29,6 +34,8 @@
 
     // Initialize the audio player
     function _init() {
+        _saveInStorage();
+        _initStorage();
         _composeSongList();        
         _renderList();
         _checkPlayType();
@@ -274,7 +281,6 @@
     // Validates the current song
     function _validSong() {
         errorStop = false;
-        console.log(errorStop);
         if(nextSong === -1 || nextSong > songs.length-1) {
             document.body.classList.add('song-error');
             setTimeout(function() {
@@ -291,14 +297,60 @@
         })
     };
 
+    // Local Storage
+    function _localStorage() {
+        if (typeof(Storage) !== "undefined") {
+            // Store
+            localStorage.setItem("saveStorage", saveStorage);
+            var anotherTest = localStorage.getItem("saveStorage", saveStorage);
+            console.log(anotherTest);
+            localStorage.setItem("thisSong", thisSong);
+            localStorage.setItem("audio", audio);
+            localStorage.setItem("songs", songs);
+            localStorage.setItem("songList", songList);
+            localStorage.setItem("format", format);
+            localStorage.setItem("nextSong", nextSong);
+            localStorage.setItem("previousSong", previousSong);
+        } else {
+            alert('Im sorry, your browser doesnt support local storage')
+        }
+    }
+
+    // Saves in the local storage every second
+    function _saveInStorage() {
+        setInterval(function(){
+            _localStorage()
+        }, 1000)
+    }
+
+    // Inits the local storage
+    function _initStorage() {
+        if(saveStorage) {
+            console.log('hello')    
+            document.getElementById('listSongs').innerHTML = localStorage.getItem("songs");                            
+            saveStorage = localStorage.getItem("saveStorage");
+            thisSong = localStorage.getItem("thisSong");
+            audio = localStorage.getItem("audio");
+            songs = localStorage.getItem("songs");
+            songList = localStorage.getItem("songList");
+            format = localStorage.getItem("format");
+            nextSong = localStorage.getItem("nextSong");
+            previousSong = localStorage.getItem("previousSong");
+            initSong(thisSong);
+        }
+    }
+
+    // Saves the local storage
     window.Player = {
         initPlayer: function(event){
+            saveStorage = true;
             thisSong = event.target.parentNode;
             nextSong = parseInt(thisSong.id);
             previousSong = parseInt(thisSong.id);
             initSong(event.target);
         }
     }
+    
 }(window));
 
 document.getElementById('listSongs').addEventListener('click', function(event) {
