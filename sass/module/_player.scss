@@ -45,3 +45,16 @@
 .fa-backward {
     margin-right: 20px;
 }
+
+.song-error {
+    animation: error 0.5s infinite;
+}
+
+@keyframes error {
+  0% {
+    background-color: #6C0101;
+  }
+  100% {
+    background-color: #B20101;
+  }
+}
